@@ -35,8 +35,10 @@ def ScreenShotEveryXMins(url, N, M):
         img_name = "screenshot" + str(i) + ".png"
         SaveScreenshot(url, img_name)
         endtime = time.time()
-        print "Time taken till screenshot: %fs" %(endtime - starttime)
-        time.sleep( M * 60 - endtime + starttime)
+        timetaken = endtime - starttime
+        print "Time taken till screenshot: %fs" %(timetaken)
+        if timetaken < M * 60:
+            time.sleep( M * 60 - timetaken)
         i += 1
 # ---------------------------------------------------------------------------- #
 if __name__ == "__main__":
@@ -47,8 +49,11 @@ if __name__ == "__main__":
     # Safari
     # driver = webdriver.Safari()
 
-    ScreenShotEveryXMins(url, 1, 1)
+    num_screenshots = 100
+    M = 1
+
+    ScreenShotEveryXMins(url, num_screenshots, M)
 
     TimeStampImages()
 
-    CreateGif("./timestamped/")
+    CreateGif("./timestamped/", duration = 0.25)

@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 import time, datetime
 from timestamp import TimeStampImages
-from gif import CreateGif
+import os
 
 # ---------------------------------------------------------------------------- #
 def SaveScreenshot(url, img_name, driver = webdriver.PhantomJS(), load_delay = 15):
@@ -49,11 +49,11 @@ if __name__ == "__main__":
     # Safari
     # driver = webdriver.Safari()
 
-    num_screenshots = 100
+    num_screenshots = 1440 # 60 * 24 for the entire day.
     M = 1
 
     ScreenShotEveryXMins(url, num_screenshots, M)
 
     TimeStampImages()
 
-    CreateGif("./timestamped/", duration = 0.25)
+    os.system("convert -quality 100 ./timestamped/*.png outvideo.mpeg")

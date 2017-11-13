@@ -1,4 +1,10 @@
-README
+# Traffic Time-lapse
+
+## Demo
+
+Created from a cropped section of an outputted video file:
+
+![Demo](https://user-images.githubusercontent.com/18148370/32717620-506a460e-c880-11e7-9f26-eebed5a88748.gif)
 
 ## Dependencies
 
